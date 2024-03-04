@@ -11,6 +11,7 @@ import uploadProfile from "./AutherizedUsers/uploadProfile.js"
 // Owners Only
 import deleteUser from "./AutherizedUsers/OwnersOnly/deleteUser.js"
 import updateUser from "./AutherizedUsers/OwnersOnly/updateUser.js"
+import getUsersCart from "./AutherizedUsers/OwnersOnly/getUsersCart.js"
 
 // Admins Only
 import allUsersInfo from "./AdminsOnly/allUsersInfo.js"
@@ -28,6 +29,7 @@ export {
   // Owners Only
   deleteUser,
   updateUser,
+  getUsersCart,
   // Admins Only
   allUsersInfo,
   deleteMultipleUsers

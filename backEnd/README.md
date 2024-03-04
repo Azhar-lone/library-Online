@@ -84,9 +84,17 @@ body=
     }
 ```
 #### returns{msg} 
+**10** get users  cart
+
+```javascript
+GET /user/getcart
+```
+#### if status=200 ok returns{msg,cart} 
+#### returns{msg} 
+
 
 ### Admins Routes
-**10** deleteMultipleUsers 
+**11** deleteMultipleUsers 
 ```javascript
 DELETE /user/admin/deletemultiple
 body={
@@ -95,7 +103,7 @@ body={
 ```
 #### returns{msg} 
 
-**11** get All Users Info
+**12** get All Users Info
 
 ```javascript
 GET /user/admin/allusers

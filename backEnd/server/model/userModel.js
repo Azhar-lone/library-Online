@@ -59,6 +59,11 @@ let userSchema = mongoose.Schema({
       unique: true
     }
   ],
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'userModel',
+    unique: true
+  }],
   isSuspended: {
     type: Boolean,
     default: false,
@@ -66,7 +71,6 @@ let userSchema = mongoose.Schema({
   }
   , isAdmin: {
     type: Boolean,
-    select: false,
     default: false
   }
 })

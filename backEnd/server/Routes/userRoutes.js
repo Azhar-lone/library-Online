@@ -14,6 +14,7 @@ import {
   // Owners Only
   deleteUser,
   updateUser,
+  getUsersCart,
   // Admins Only
   allUsersInfo,
   deleteMultipleUsers
@@ -54,7 +55,7 @@ userRouter
   // Owners Only
   .delete("/delete", deleteUser)
   .put("/update", updateUser)
-
+  .get("/getcart", getUsersCart)
 // Routes accessible only to admins
 // userRouter.use(AdminAuthorized)
 userRouter
