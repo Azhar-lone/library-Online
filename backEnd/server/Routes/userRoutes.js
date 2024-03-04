@@ -23,24 +23,34 @@ import {
 import { AdminAuthorized, UserAuth, validationError } from '../middlewares/auth.js'
 
 // Importing Validations
-import { signUpValidation } from "../validations/exportValidations.js"
+import {
+  validateId,
+  signUpValidation,
+  userInfoValidation,
+  loginValidation
+} from "../validations/exportValidations.js"
 
 // Initializing Router in Strict Mode
 const userRouter = express.Router({ strict: true })
 
 // Public routes=For All
 userRouter
-  .get(":username", userInfo)
-  .post('/login', login)
   .post('/signup', signUpValidation, validationError, signUp)
-  .post('/logout', logout)
-
+  .post('/login', loginValidation, validationError, login)
+  .get(":username",
+    userInfoValidation,
+    validationError,
+    userInfo)
 // Routes requiring user authentication
 // Autherized Users Only
 userRouter
   .use(UserAuth)
+  .post('/logout', logout)
   .post('/upload/profilepic', uploadProfile)
-  .post('/follow', follow)
+  .post('/follow',
+    validateId,
+    validationError,
+    follow)
   // Owners Only
   .delete("/delete", deleteUser)
   .put("/update", updateUser)

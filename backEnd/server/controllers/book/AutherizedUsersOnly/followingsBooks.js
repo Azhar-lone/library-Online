@@ -2,24 +2,18 @@ import bookModel from '../../../model/bookModel.js'
 import userModel from '../../../model/userModel.js'
 export default async function followingsBooks(req, res) {
   try {
-    let pageNumber = req.query.page
+    const { limit, page } = req.query
 
-    pageNumber = parseInt(pageNumber)
-
-    if (isNaN(pageNumber) || pageNumber < 0) {
-      return res.status(401).json({
-        msg: 'not authorized '
-      })
-    }
     let followings = await userModel
       .findById(req.currentUserId)
       .select('followings')
     let books = await bookModel
       .find({ timeStamp: { $sort: -1 } }, { addedBy: { $in: followings } })
-      .limit((pageNumber - 1) * 8)
+      .skip((page - 1) * limit)
+      .select({ thumbnailPicture: 1, bookName: 1 })
+      .limit(limit)
     return res.status(200).json({
       msg: 'books retreived successfully',
-      successs: true,
       books: books
     })
   } catch (error) {

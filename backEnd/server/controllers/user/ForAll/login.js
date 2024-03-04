@@ -14,20 +14,13 @@ import { createToken } from '../../../middlewares/auth.js'
 export default async function login(req, res) {
   try {
     // Extract email and password from the request body
-    const { email, password } = req.body
-    // console.log(typeof email,typeof password)
-    if (typeof email !== "string" || typeof password !== "string" || password.length > 16) {
-      return res.status(401).json({
-        msg: 'not authorized '
-      })
-    }
-    // email.trim()
-    // password.trim()
+    const { email, password, ...unexpectedFields } = req.body
 
-    // Check if email and password are provided
-    if (!email || !password) {
+    // Check for unexpected fields
+    // if their is somthing unexpected then it is not what we need in the server
+    if (Object.keys(unexpectedFields).length > 0) {
       return res.status(400).json({
-        msg: 'Both email and password are required',
+        msg: "unexpected fields in the body"
       })
     }
 

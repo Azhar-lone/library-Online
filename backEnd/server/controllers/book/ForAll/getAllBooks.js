@@ -4,19 +4,19 @@ import bookModel from '../../../model/bookModel.js'
 export default async function getAllBooks(req, res) {
   try {
     let pageNumber = req.query.page
-
-    pageNumber = parseInt(pageNumber)
-    if (isNaN(pageNumber) || pageNumber < 0) {
-      return res.status(401).json({
-        msg: 'not authorized '
-      })
-    }
+    let limit = req.query.limit
+    // pageNumber = parseInt(pageNumber)
+    // if (isNaN(pageNumber) || pageNumber < 0) {
+    //   return res.status(401).json({
+    //     msg: 'not authorized '
+    //   })
+    // }
     let books = await bookModel
       .find()
       .select({ thumbnailPicture: 1, bookName: 1 })
       .sort({ timeStamp: -1 })
-      .limit(8)
-      .skip((pageNumber - 1) * 8)
+      .limit(limit)
+      .skip((pageNumber - 1) * limit)
     let count = await bookModel.find().count()
     if (!books)
       return res.status(404).json({

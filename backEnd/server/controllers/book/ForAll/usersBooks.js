@@ -2,21 +2,15 @@ import bookModel from '../../../model/bookModel.js'
 
 export default async function usersBooks(req, res) {
   try {
-    const { userId, page } = req.query
-    console.log("typof UserId :", typeof userId, "  typof page :", typeof page)
-    //convert page to int and 
-
-    if (typeof page !== "number" || typeof userId !== "string") {
-      return res.status(401).json({
-        msg: 'not authorized '
-      })
-    }
+    const { limit, page } = req.query
+    const userId = req.body.id
 
     let books = await bookModel
       .find({ addedBy: userId })
       .sort({ timeStamp: -1 })
-      .limit(8)
-      .skip((pageNumber - 1) * 8)
+      .select({ thumbnailPicture: 1, bookName: 1 })
+      .limit(limit)
+      .skip((pageNumber - 1) * limit)
 
     if (!books)
       return res.status(404).json({

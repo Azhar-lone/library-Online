@@ -2,7 +2,8 @@ import bookModel from "../../../../model/bookModel.js";
 
 export default async function deleteBook(req, res) {
   try {
-    let { id } = req.body
+    let { id} = req.body
+      
 
     let book = await bookModel.findById(id).select('filePath addedBy')
     if (!book)

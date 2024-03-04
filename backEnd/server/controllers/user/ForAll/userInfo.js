@@ -5,12 +5,6 @@ export default async function userInfo(req, res) {
     //this userName should be Url freindly must
     //change it to slug
     let { username } = req.params
-    if (typeof username !== "string") {
-      return res.status(401).json({
-        msg: 'not authorized '
-      })
-    }
-    console.log(" one ")
     let user = await userModel.findOne({ userName: username })
       .populate("followers", "profilePicPath name userName")
       .populate("following", "profilePicPath name userName")

@@ -1,7 +1,7 @@
 import userModel from "../../../model/userModel.js"
 export default async function follow(req, res) {
   try {
-    let { recipientId } = req.body
+    let  recipientId  = req.body.id
     let recipient = await userModel.findById(recipientId)
     let sender = await userModel.findById(req.currentUserId)
     if (!sender || !recipient) {
@@ -31,7 +31,7 @@ export default async function follow(req, res) {
     let afterRecipient = await recipient.save()
     return res.status(200).json({
       msg: 'unfollowed successfully',
-      // recipient: afterRecipient,
+      recipient: afterRecipient,
       sender: afterSender
     })
   } catch (error) {

@@ -21,9 +21,8 @@ export default async function uploadProfile(req, res) {
     uploadF.single(image)(req, res, async err => {
       console.log("file Object :", req.file)
       if (err) {
-        return res.json({
+        return res.status(500).json({
           msg: 'error while uploading file',
-          success: false,
           error: err
         })
       }
@@ -32,13 +31,11 @@ export default async function uploadProfile(req, res) {
     let savedUser = await user.save()
     res.status(200).json({
       msg: 'image uploaded successfully',
-      success: true,
       user: savedUser
     })
   } catch (error) {
     res.status(500).json({
       msg: 'internal server error',
-      success: false,
       error: error.message
     })
   }

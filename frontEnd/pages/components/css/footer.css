@@ -1,0 +1,105 @@
+
+footer {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 60vh;
+    position:static;
+    bottom: 0%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+}
+
+footer h1 {
+    color: blueviolet;
+    width: 10%;
+    height: 10%;
+    margin: auto;
+}
+
+.fcontent {
+    /* background-color: blue; */
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    /* margin-bottom: 0%; */
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+
+.fcontent .content1 {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fcontent .content1 a {
+    font-size: larger;
+    color: black;
+    width: 50%;
+    height: 10%;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.fcontent .content1 a:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+footer h4 {
+    width: 33%;
+    font-size: larger;
+    color: blueviolet;
+    margin: auto;
+}
+
+@media (max-width:984px) {
+
+    .fcontent {
+        width: 100%;
+        margin: 0%;
+    }
+
+    footer {
+        height: 100vh;
+    }
+
+    footer h1 {
+        font-size: large;
+    }
+
+    .fcontent .content1 {
+        width: 30%;
+        height: 100%;
+    }
+
+    .content1 a {
+        width: 100%;
+    }
+
+    h3 {
+        font-size: small;
+        width: 30%;
+        color: blueviolet;
+    }
+
+    .fcontent .content1 a:hover {
+        background-color: whitesmoke;
+        color: blueviolet;
+    }
+
+    footer h4 {
+        text-align: center;
+        font-size: small;
+        width: 100%;
+    }
+}
+
+
+
+

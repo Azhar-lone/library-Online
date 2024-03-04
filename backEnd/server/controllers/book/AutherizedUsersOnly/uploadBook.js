@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     try {
       let { bookName, bookAuthor, bookDiscription, bookCategory, publishedOn } =
         req.body
-
+    
 
       let username = await userModel.findById(req.currentUserId, {
         userName: 1,
@@ -52,9 +52,10 @@ const storage = multer.diskStorage({
       cb(uploadError, path.resolve(`Files/${username.userName}/${slugedName}/`))
     }
     catch (error) {
-      res.status(500).json({
-        msg: "error while uploading book"
-      })
+      console.log(({
+        msg: "error while uploading book",
+        error:error
+      }))
     }
   },
   filename: function (req, file, cb) {

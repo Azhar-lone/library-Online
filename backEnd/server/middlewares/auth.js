@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-import { validationResult } from "express-validator"
+import { check, validationResult } from "express-validator"
+
 import userModel from '../model/userModel.js'
 const { sign, verify } = jwt
 export function createToken(id) {
@@ -12,6 +13,7 @@ export async function AdminAuthorized(req, res, next) {
     const admin = await userModel.findById(req.currentUserId)
 
     if (admin.isAdmin) {
+      // req.user=admin
       return next()
     } else
       return res.status(401).json({
@@ -52,7 +54,6 @@ export async function AdminAuthorized(req, res, next) {
 
 export function UserAuth(req, res, next) {
   try {
-
     if (req.cookies.login) {
       let decoded = verify(req.cookies.login, process.env.SecretKey)
 

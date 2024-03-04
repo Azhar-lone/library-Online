@@ -1,0 +1,52 @@
+.dropDown{
+  @apply w-[30%] fixed bg-white hidden  right-1 h-[0vh] dark:bg-black  rounded-xl top-[10.5vh] 
+   
+}
+
+
+
+.dropDown-enter{
+  @apply  h-[0] block
+
+}
+.dropDown-enter-active{
+  @apply  h-[90vh]  duration-100 
+
+}
+
+.dropDown-enter-done{
+  @apply   h-[90vh] block
+}
+
+.dropDown-exit{
+@apply  block   duration-100
+}
+.dropDown-exit-active{
+@apply  h-[0] duration-100 
+}
+.dropDown-exit-done{
+  @apply hidden duration-100
+}
+
+.mobbar{
+  @apply w-[80%] h-[89vh] flex flex-col items-center gap-4 py-4 fixed top-[10.5vh] right-2 bg-white dark:bg-black  translate-x-[100%] 
+md:hidden
+}
+.mobbar-enter{
+  @apply translate-x-[100%] 
+}
+.mobbar-enter-active{
+  @apply   translate-x-10 duration-100
+}
+.mobbar-enter-done{
+  @apply translate-x-0
+}
+.mobbar-exit{
+  @apply translate-x-0
+}
+.mobbar-exit-active{
+@apply translate-x-[100%] duration-100
+}
+.mobbar-exit-done{
+  @apply hidden
+}

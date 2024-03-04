@@ -8,12 +8,10 @@ export default function deleteMultipleUsers(req, res) {
     })
     res.status(200).json({
       msg: 'users Deleted successfully',
-      success: true
     })
   } catch (error) {
     res.status(500).json({
       msg: 'internal server error',
-      success: false,
       error: error.message
     })
   }
