@@ -9,6 +9,7 @@ import path from "path"
 import userRouter from './server/Routes/userRoutes.js';
 import bookRouter from './server/Routes/bookRoutes.js';
 import reviewRouter from './server/Routes/reviewRoutes.js';
+import searchRouter from "./server/Routes/searchRoutes.js"
 //initializing express app
 const app = express();
 
@@ -23,7 +24,7 @@ app.use(
 );
 
 app
-  // Middleware for parsing cookies, JSON, and URL-encoded data
+  // Middlewares for parsing cookies, JSON, and URL-encoded data
   .use(cookieParser())
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
@@ -33,7 +34,7 @@ app
   .use('/user', userRouter)
   .use('/book', bookRouter)
   .use('/review', reviewRouter)
-
+.use("/search",searchRouter)
 // Handling 404 Not Found
 app.use((req, res) => {
   res.status(404).json({

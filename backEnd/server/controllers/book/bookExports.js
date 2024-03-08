@@ -3,6 +3,7 @@ import getAllBooks from "./ForAll/getAllBooks.js"
 import featuredBook from "./ForAll/featuredBook.js"
 import getBook from "./ForAll/getBook.js"
 import usersBooks from "./ForAll/usersBooks.js"
+import getRelatedBooks from "./ForAll/getRelatedBooks.js"
 
 // Autherized Users Only
 import downloadBook from "./AutherizedUsersOnly/downloadBook.js"

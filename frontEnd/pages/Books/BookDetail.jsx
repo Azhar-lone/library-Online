@@ -4,26 +4,28 @@ import User from "../Profile/User.jsx"
 import { toast } from 'react-toastify'
 import { useLoading } from '../../Context/LoadingContext'
 import { useEffect, useState } from 'react'
-import { useParams,NavLink } from 'react-router-dom'
+import { useParams, NavLink } from 'react-router-dom'
 import { useUser } from '../../Context/userContext'
-export default function BookDetail (props) {
+import { IoMdHeart } from "react-icons/io"
+
+export default function BookDetail(props) {
   let { setLoading } = useLoading()
 
   let [book, setBook] = useState({
-bookName:"Testing Name",
-bookAuthor:"Teting Author",
-discription:"Bokk discription is something whiinc should be llarge and lenghthy so this is not that lengthy but it is just for demostration purposes",
-uploadedIn:Date.now(),
-likedBy:[],
-addedBy:{
-  profilePic:"/src/assets/images/test2.png",
-  userName:"some Usernames"
+    bookName: "Testing Name",
+    bookAuthor: "Testing Author",
+    discription: "Bokk discription is something whiinc should be llarge and lenghthy so this is not that lengthy but it is just for demostration purposes",
+    uploadedIn: Date.now(),
+    likedBy: [],
+    addedBy: {
+      profilePic: "/src/assets/images/test.png",
+      userName: "some Usernames"
 
-}
+    }
   })
   let { bookId } = useParams()
-let{isLoggedIn} =useUser()
-document.title="library-Online|"+book.bookName
+  let { isLoggedIn } = useUser()
+  document.title = "library-Online|" + book.bookName
 
 
   useEffect(() => {
@@ -32,7 +34,7 @@ document.title="library-Online|"+book.bookName
     setLoading(false)
   }, [])
 
-  async function getBookDetails () {
+  async function getBookDetails() {
     try {
       let id = bookId
 
@@ -49,42 +51,48 @@ document.title="library-Online|"+book.bookName
       toast.error(error)
     }
   }
-  async function downloadBook () {
+  async function downloadBook() {
     try {
-      let id=bookId
+      let id = bookId
       setLoading(true)
-      let res = await fetch(BackendUrl + '/book/download/'+id,{
-        credentials:"include",
+      let res = await fetch(BackendUrl + '/book/download/' + id, {
+        credentials: "include",
 
       })
       setLoading(false)
       if (!res.ok) {
-        let json=await res.json()
+        let json = await res.json()
         toast.error(json.msg)
         return
       }
       return
     } catch (error) {
-    setLoading(false)
+      setLoading(false)
       toast.error(error.message)
-    
+
     }
   }
 
   return (
-    <div className='bg-white dark mt-[11vh] flex flex-col  h-[200vh] gap-10'>
+    <div className='mt-[11vh] items-center flex flex-col'>
       {/* userInfo starts here */}
+      <User user={book.addedBy} classNames="bg-white dark m-5" />
+      <div className='gap-4 bg-white shadow-2xl dark flex flex-col w-[95%] items-center pb-5 rounded-lg'>
 
-
-
-      <div className='gap-4 bg-white shadow-2xl   '>
-   <User user={book.addedBy}  />
-
-        <img src='/src/assets/images/test1.png' alt='bookthumnail' className='w-[100%] h-[100vh]'/>
+        <img src='/src/assets/images/test.png' alt='bookthumnail' className='w-[100%] h-[100vh] ' />
         <div className='w-full '>{/* // bookInfo */}
-          <h5>Name: {book.bookName}</h5>
-          <h6>Author: {book.bookAuthor}</h6>
-          <p>{book.discription}</p>
+          <h1 className='w-[100%] text-center p-2  text-2xl'>{book.bookName}</h1>
+          <h6 className='w-[100%] text-center p-2  text-xl'>Author: {book.bookAuthor}</h6>
+          <div className='p-8'>
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
+
+
+            {book.discription}</div>
         </div>
         <div className='btnFunc text-center'>
           {isLoggedIn ? (
@@ -93,13 +101,14 @@ document.title="library-Online|"+book.bookName
             <NavLink to='/login' className="w-2">Login to Download</NavLink>
           )}
         </div>
-        <p>uploadedIn: {book.uploadedIn}</p>
-        <p>published On :{book.publishedOn}</p>
-        {isLoggedIn && <i>heartIcon {book.likedBy.length}</i>}
+        <div className='flex justify-around  w-[100%]'>
+          <p>uploadedIn: {book.uploadedIn}</p>
+          <p>published On :{book.publishedOn}</p>
+          <IoMdHeart className='size-8 hover:text-red-600 hover:cursor-pointer' />
+        </div>
       </div>
-
-      <Discussion className="flex flex-col items-center gap-4 w-[100%] bg-white shadow-2xl" />
-      <Related className=""/>
+      <Related className="w-full m-5 p-5 flex justify-around gap-5 flex-wrap rounded-lg" bookId={book._id} />
+      <Discussion className="flex flex-col items-center gap-4 w-[95%] dark bg-white shadow-2xl rounded-lg" />
     </div>
   )
 }

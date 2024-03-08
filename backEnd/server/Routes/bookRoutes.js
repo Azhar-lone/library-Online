@@ -11,6 +11,7 @@ import {
     featuredBook,
     getBook,
     usersBooks,
+getRelatedBooks,
     // Autherized Users Only
     downloadBook,
     followingsBooks,
@@ -57,14 +58,19 @@ bookRouter
         validateGetAllBooks,
         validationError,
         followingsBooks)
+.get("/related",
+    validateId,
+     validationError,
+     getRelatedBooks
 
+)
 // Users Only
 bookRouter.use(UserAuth);
 bookRouter
     .post("/upload",
         validateUploadBook,
         validationError,
-        uploadBook_Multer.single("file")
+        uploadBook_Multer.single("pdf")
         , uploadBook)
     .get("/download/:id"
         , validateId,

@@ -1,4 +1,4 @@
-import { check } from "express-validator"
+import { body } from "express-validator"
 
 const allowedDomains = [
     'test.com',
@@ -15,32 +15,36 @@ const allowedDomains = [
 const signUpValidation = [
 
     // email
-    check("email")
+    body("email")
         .exists().withMessage("Email is required")
-        .isEmail().withMessage("not a valid email")
-        .isLength({ max: 30 }).withMessage("not a valid length"),
-        // .isWhitelisted(allowedDomains).withMessage("not allowed domain"),
+        .isEmail().withMessage("not a valid email"),
+    // .isWhitelisted(allowedDomains).withMessage("not allowed domain"),
     // password
-    check("password")
+    body("password")
         .exists().withMessage("password is required")
-        .isString().withMessage("not a valid string")
+        .trim()
         .isStrongPassword().withMessage("not A strong password")
-        .isLength({ max: 16 }).withMessage("not a valid length"),
+        // .isLength({ max: 16 }).withMessage("not a valid length")
+        .escape(),
 
     // confirm passowrd
-    check("confirmPassword")
+    body("confirmPassword")
         .exists().withMessage("confirm password is required")
-        .isLength({ max: 16 }).withMessage("not a valid length")
-        .isString().withMessage("not a valid string"),
-
+        .trim()
+        // .isLength({ max: 16 }).withMessage("not a valid length")
+        .escape(),
     // name
-    check("name")
+    body("name")
         .exists().withMessage("name is required")
         .isString().withMessage("not a valid string")
-        .isLength({ max: 16 }).withMessage("not a valid length"),
+        .isLength({ max: 20 }).withMessage("not a valid length")
+        .escape(),
+
     // DOB
-    check("DOB")
+    body("DOB")
         .exists().withMessage("DOB is required")
-        // .isDate().withMessage("not a valid date")
+        .escape(),
+
+    // .isDate().withMessage("not a valid date")
 ]
 export default signUpValidation

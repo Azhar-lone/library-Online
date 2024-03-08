@@ -1,32 +1,26 @@
 import userModel from "../../../model/userModel.js";
+import multer from "multer";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => { },
+  filename: (req, file, cb) => { }
+})
+
+
+export const uploadProfile_multer = multer({
+  storage: storage,
+  limits: {
+    fileSize: 10 * 1024 * 1024,//10Mb
+    fields: 0,
+    files: 1,
+    parts: 1
+  },
+})
+
 
 export default async function uploadProfile(req, res) {
   try {
-    let { image } = req.body
 
-    let allowedImageTypes = {
-      'image/png': 'png',
-      'image/jpeg': 'jpeg',
-      'image/jpg': 'jpg'
-    }
-
-    let user = await userModel.findById(req.currentUserId)
-
-    let uploadF = upload(
-      allowedImageTypes,
-      `${user.userName}_${user._id}`,
-      user.userName
-    )
-
-    uploadF.single(image)(req, res, async err => {
-      console.log("file Object :", req.file)
-      if (err) {
-        return res.status(500).json({
-          msg: 'error while uploading file',
-          error: err
-        })
-      }
-    })
     user.profilePicPath = req.file.path
     let savedUser = await user.save()
     res.status(200).json({

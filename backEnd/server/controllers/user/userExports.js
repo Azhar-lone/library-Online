@@ -6,7 +6,7 @@ import userInfo from "./ForAll/userInfo.js"
 // Autherized Users Only
 import logout from "./AutherizedUsers/logout.js"
 import follow from "./AutherizedUsers/follow.js"
-import uploadProfile from "./AutherizedUsers/uploadProfile.js"
+import uploadProfile,{uploadProfile_multer} from "./AutherizedUsers/uploadProfile.js"
 
 // Owners Only
 import deleteUser from "./AutherizedUsers/OwnersOnly/deleteUser.js"
@@ -26,6 +26,7 @@ export {
   logout,
   follow,
   uploadProfile,
+  uploadProfile_multer,
   // Owners Only
   deleteUser,
   updateUser,

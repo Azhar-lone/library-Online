@@ -27,7 +27,7 @@ body={ email:emailString,
 ```
 #### if status=200 ok returns{msg,userName} 
 #### else returns{msg} 
-**3** getUseInfo
+**3** getUserInfo
 ```javascript
 GET /user/:username
 where username=slugString
@@ -146,8 +146,14 @@ GET /book/following?page&limit
 page=positive Number
 limit=positive Number
 ```
+**6** get Related Books
+
+```javascript
+GET /book/related?id
+id=bookId
+```
 ### USERS ONLY Routes
-**6** upload Book
+**7** upload Book
 
 ```javascript
 POST /book/upload
@@ -155,13 +161,13 @@ body={
     lots of things
 }
 ```
-**7** download Book
+**8** download Book
 
 ```javascript
 GET /book/download/:id
 
 ```
-**8** Like Book
+**9** Like Book
 
 ```javascript
 PATCH /book/like
@@ -170,7 +176,7 @@ body={
 }
 ```
 ### OWNERS Routes
-**9** delete Book
+**10** delete Book
 
 ```javascript
 POST /book/delete
@@ -178,13 +184,20 @@ body={
     id:bookId
 }
 ```
-**10** update Book
+**11** update Book
 
 ```javascript
 PUT /book/update
 not implimented yet
 ```
 ### Admins Routes
+**12** deleteMultipleBooks 
+```javascript
+DELETE /book/admin/deletemultiple
+body={
+    arrayOfBookIds:mongoIds[]
+}
+```
 
 # 3-Reviews feature
 ### Public Routes
@@ -199,3 +212,62 @@ GET /review/gettop?id&range
 id =bookId
 range=positive number
 ```
+### USERS ONLY Routes
+**3** add review to book
+```javascript
+POST /review/add
+body={
+review:String(10-300),
+ratings:int(1-5),
+reviewOfBook:monogId
+}
+```
+#### if status=200 ok returns{msg,review} 
+#### else returns{msg}
+**4** like review 
+```javascript
+POST /review/like
+body={
+id:monogId=reviewId
+}
+```
+#### returns{msg}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 4-Search feature
+### Public Routes
+**1** search from All 
+```javascript
+GET /search/?query
+query=Search String
+```
+#### if status=200 ok returns{msg,users,books}
+#### else returns{msg}
+**2** search from books 
+```javascript
+GET /search/books/?query
+query=Search String
+```
+#### if status=200 ok returns{msg,books}
+#### else returns{msg}
+**1** search from All 
+```javascript
+GET /search/users/?query
+query=Search String
+```
+#### if status=200 ok returns{msg,users}
+#### else returns{msg}
+

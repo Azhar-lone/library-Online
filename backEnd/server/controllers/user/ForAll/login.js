@@ -15,7 +15,7 @@ export default async function login(req, res) {
   try {
     // Extract email and password from the request body
     const { email, password, ...unexpectedFields } = req.body
-
+console.log("password: ",password)
     // Check for unexpected fields
     // if their is somthing unexpected then it is not what we need in the server
     if (Object.keys(unexpectedFields).length > 0) {

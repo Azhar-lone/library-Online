@@ -8,6 +8,14 @@ import validateId from "./databaseValidations/mongoIdValidation.js";
 // book Validations
 import validateGetAllBooks from "./bookValidations/validateGetAllBooks.js";
 import validateUploadBook from "./bookValidations/validateUploadBook.js";
+
+// review Validations
+import addReviewValidation from "./reviewValidations/addReviewValidation.js";
+
+
+// Search Validations
+import queryValidations from "./searchValidations/    queryValidations.js";
+
 export {
     //  user validations
     signUpValidation,
@@ -20,4 +28,8 @@ export {
     validateUploadBook,
     userInfoValidation,
     loginValidation,
+    // review Validations
+    addReviewValidation,
+    // Search Validations
+    queryValidations,
 }

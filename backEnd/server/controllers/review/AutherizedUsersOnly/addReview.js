@@ -21,10 +21,10 @@ export default async function addReview (req, res) {
       }
       return res.status(200).json({
         msg: 'review posted successfully',
-        Review: Review
+        review: Review
       })
     } catch (error) {
-      res.json({
+      res.status(500).json({
         msg: 'internal server error',
         error: error.message
       })

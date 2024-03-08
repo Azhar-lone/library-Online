@@ -38,7 +38,7 @@ export default function Book (props) {
 
 
   return (
-    <div   className='lg:w-[48%] xl:w-[30%] md:w-[46%] w-[99%] dark  h-[75vh] shadow-2xl flex flex-col items-center justify-around rounded-2xl '>
+    <div   className='lg:w-[48%] xl:w-[30%] md:w-[46%] w-[99%] dark bg-white h-[75vh] shadow-2xl flex flex-col items-center justify-around rounded-2xl '>
       <img
         src={book.thumnailPicture}
         

@@ -68,7 +68,6 @@ localStorage.clear()
       msg={"Do you want to delete your acount this can't be undone"} 
       onCancel={() => { setDeleteTrue(false) }}
       onConfirm={deleteUser}
-      
       />
       }
       <div className='flex flex-col h-[40%] gap-5 w-[100%] items-center'>

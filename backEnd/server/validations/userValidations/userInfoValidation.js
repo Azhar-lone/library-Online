@@ -3,6 +3,6 @@ const userInfoValidation = [
     // username
     check("username")
         .isSlug().withMessage("unexpected user name")
-    //no need for sanitization   
+        .escape().trim()
 ]
 export default userInfoValidation
