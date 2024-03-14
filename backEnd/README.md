@@ -83,6 +83,7 @@ body=
     name?:String,
     }
 ```
+#### if status=200 ok returns{msg,upadatedUser} 
 #### returns{msg} 
 **10** get users  cart
 
@@ -250,6 +251,7 @@ id:monogId=reviewId
 # 4-Search feature
 ### Public Routes
 **1** search from All 
+#### Canceled feature
 ```javascript
 GET /search/?query
 query=Search String
@@ -263,7 +265,9 @@ query=Search String
 ```
 #### if status=200 ok returns{msg,books}
 #### else returns{msg}
-**1** search from All 
+**1** search from Users
+#### Canceled feature
+
 ```javascript
 GET /search/users/?query
 query=Search String
@@ -271,3 +275,20 @@ query=Search String
 #### if status=200 ok returns{msg,users}
 #### else returns{msg}
 
+# 4-AboutUs feature
+### Public Routes
+**1** get AboutUs Info
+```javascript
+GET /aboutus/
+
+```
+#### if status=200 ok returns{msg,aboutus}
+#### else returns{msg}
+### Admins Routes
+**1** Edit AboutUs Info
+```javascript
+PUT /aboutus/edit
+
+```
+#### if status=200 ok returns{msg,aboutus}
+#### else returns{msg}

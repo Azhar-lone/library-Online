@@ -3,28 +3,9 @@ import { BackendUrl } from "/globals.js"
 import Book from "./Book.jsx"
 import { toast } from "react-toastify"
 export default function Related(props) {
-    let [books, setBooks] = useState([{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    },{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    },{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    },{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    },{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    },{
-        bookName:"SomeName",
-        thumnailPicture:"/src/assets/images/test.png"
-    }
-    ])
+    let [books, setBooks] = useState([  ])
     useEffect(() => {
-        // getRelatedBooks
+        getRelatedBooks()
     }, [])
     async function getRelatedBooks() {
         try {
@@ -45,7 +26,7 @@ export default function Related(props) {
     return (<>
         {books.length > 1 && <div className={props.className}>
             {books.map((book) => (
-                <Book book={book} />
+                <Book book={book} key={book._id} />
             ))}
         </div>}
     </>)

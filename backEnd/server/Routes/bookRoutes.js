@@ -11,7 +11,7 @@ import {
     featuredBook,
     getBook,
     usersBooks,
-getRelatedBooks,
+    getRelatedBooks,
     // Autherized Users Only
     downloadBook,
     followingsBooks,
@@ -31,7 +31,7 @@ import {
 
     // book validations
     validateGetAllBooks,
-    validateUploadBook
+    // validateUploadBook
 
 } from "../validations/exportValidations.js"
 // Initializing Router
@@ -58,17 +58,17 @@ bookRouter
         validateGetAllBooks,
         validationError,
         followingsBooks)
-.get("/related",
-    validateId,
-     validationError,
-     getRelatedBooks
+    .get("/related",
+        validateId,
+        validationError,
+        getRelatedBooks
 
-)
+    )
 // Users Only
-bookRouter.use(UserAuth);
+// bookRouter.use(UserAuth);
 bookRouter
     .post("/upload",
-        validateUploadBook,
+        // validateUploadBook,
         validationError,
         uploadBook_Multer.single("pdf")
         , uploadBook)

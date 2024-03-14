@@ -9,8 +9,8 @@ import { useUser } from '../../Context/userContext.jsx'
 
 export default function UserProfile() {
   let [user, setUser] = useState({
-    followers:[],
-    following:[]
+    followers:Array(),
+    following:Array()
   })
   let [usersBooks, setUsersBooks] = useState([])
   let [booksCount, setBooksCount] = useState(0)
@@ -73,7 +73,6 @@ export default function UserProfile() {
         autoClose: 1500
       })
     } catch (error) {
-      console.log(error)
       toast.error(error.message, {
         autoClose: 1500
       })

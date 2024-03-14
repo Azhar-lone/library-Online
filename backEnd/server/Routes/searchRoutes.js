@@ -4,9 +4,9 @@ import express from 'express'
 // Importing controllers
 import {
     // For All
-    searchFromAll,
+    // searchFromAll,
     searchFromBooks,
-    searchFromUsers,
+    // searchFromUsers,
     // Autherized Users Only
 
     // Owners Only
@@ -27,9 +27,12 @@ const searchRouter = express.Router({ strict: true })
 
 // Public routes=For All
 searchRouter
-    .get("/", queryValidations, validationError, searchFromAll)
+    // .get("/", queryValidations, validationError, searchFromAll)
     .get("/books/", queryValidations, validationError, searchFromBooks)
-    .get("/users/", queryValidations, validationError, searchFromUsers)
+// .get("/users/", queryValidations, validationError, searchFromUsers)
+
+
+
 // Routes requiring user authentication
 
 // Autherized Users Only

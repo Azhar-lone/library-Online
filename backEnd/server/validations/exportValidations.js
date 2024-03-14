@@ -16,6 +16,9 @@ import addReviewValidation from "./reviewValidations/addReviewValidation.js";
 // Search Validations
 import queryValidations from "./searchValidations/    queryValidations.js";
 
+
+// About Us Validations
+import validateAboutUs from "./aboutUsValidations/validateAboutUs.js";
 export {
     //  user validations
     signUpValidation,
@@ -32,4 +35,6 @@ export {
     addReviewValidation,
     // Search Validations
     queryValidations,
+    // About Us Validations
+    validateAboutUs,
 }

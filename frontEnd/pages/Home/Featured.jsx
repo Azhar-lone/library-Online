@@ -2,19 +2,22 @@ import { IoHeart } from 'react-icons/io5'
 import { useUser } from '../../Context/userContext'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {toast} from "react-toastify"
-import {BackendUrl} from "../../globals.js"
-export default function FeaturedBook () {
-  document.title="library-Online|FeaturedBook"
+import { toast } from "react-toastify"
+import { BackendUrl } from "../../globals.js"
+import {featuredBook} from "/StaticData/home.js"
+
+
+export default function FeaturedBook() {
+  document.title = "library-Online|FeaturedBook"
 
   let { isLoggedIn } = useUser()
-  const [book, setBook] = useState({})
-let navigate=useNavigate()
+  const [book, setBook] = useState(featuredBook)
+  let navigate = useNavigate()
   useEffect(() => {
     reqFeaturedBook()
   }, [])
 
-  async function reqFeaturedBook () {
+  async function reqFeaturedBook() {
     try {
       let res = await fetch(BackendUrl + '/book/featured')
       let json = await res.json()
@@ -29,10 +32,10 @@ let navigate=useNavigate()
       toast.error(error.message)
     }
   }
-  async function downloadBook () {
+  async function downloadBook() {
     try {
       setLoading(true)
-      let res = await fetch(BackendUrl + '/book/download/'+book._id)
+      let res = await fetch(BackendUrl + '/book/download/' + book._id)
       let json = await res.json()
       setLoading(false)
       if (!res.ok) {
@@ -42,9 +45,9 @@ let navigate=useNavigate()
       toast.success(json.msg)
       return
     } catch (error) {
-    setLoading(false)
+      setLoading(false)
       toast.error(error.message)
-    
+
     }
   }
 
@@ -59,8 +62,8 @@ let navigate=useNavigate()
         <div>
           <img
             src={book.thumbnailPicture}
-            alt=''
-            className='w-[100%] h-[50%] md:h-[100%] md:w-[90%]'
+            alt='image'
+            className='w-[100%]  h-[100%] md:h-[100%] md:w-[100%] rounded-2xl'
           />
           <IoHeart className='size-10 hover:text-red-500 hover:cursor-pointer relative bottom-[97%]  md:left-4 text-white ' />
         </div>
@@ -68,7 +71,7 @@ let navigate=useNavigate()
           <h1 className='font-bold text-3xl text-blue-900'>{book.bookName}</h1>
           <p>{book.bookDiscription}</p>
 
-          <>{isLoggedIn ? <button className='btnFunc' onClick={downloadBook} >Download</button> : <button className='btnFunc' onClick={()=>{
+          <>{isLoggedIn ? <button className='btnFunc' onClick={downloadBook} >Download</button> : <button className='btnFunc' onClick={() => {
             navigate("/signup")
           }}>SignIn to download</button>}</>
         </div>

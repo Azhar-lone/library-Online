@@ -13,7 +13,7 @@ export default function Following () {
   // get("/serveraddress/getFollowingsPosts")
   const [books, setBooks] = useState([])
   useEffect(() => {
-    reqFollowingBooks
+    reqFollowingBooks()
   }, [])
 
   async function reqFollowingBooks () {

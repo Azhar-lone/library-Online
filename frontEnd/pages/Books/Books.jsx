@@ -4,6 +4,9 @@ import '../components/css/posts.css'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { BackendUrl } from '../../globals.js'
+
+
+
 export default function Books(props) {
   window.document.title = "Books"
   let { setLoading } = useLoading()
@@ -12,7 +15,7 @@ export default function Books(props) {
 
   useEffect(() => {
     setLoading(true)
-    getBooks
+    getBooks(1)
     setLoading(false)
 
 
@@ -24,11 +27,10 @@ export default function Books(props) {
 
   async function getBooks(pageNumber) {
     try {
-      let res = await fetch(BackendUrl + '/book/getallbooks?page=' + pageNumber | 1 + '&limit=10')
+      let res = await fetch(BackendUrl + '/book/getallbooks?page=' + pageNumber + '&limit=10')
       let json = await res.json()
       if (!res.ok) {
         toast.error(json.msg)
-        console.log(json)
         return
       }
       setBooks(json.books)

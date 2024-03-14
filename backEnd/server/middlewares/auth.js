@@ -4,7 +4,7 @@ import { check, validationResult } from "express-validator"
 import userModel from '../model/userModel.js'
 const { sign, verify } = jwt
 export function createToken(id) {
-  let token = sign(id, process.env.SecretKey)
+  let token = sign(id, process.env.UserSecretKey)
   return token
 }
 

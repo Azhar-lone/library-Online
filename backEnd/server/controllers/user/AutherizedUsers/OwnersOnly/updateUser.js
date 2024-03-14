@@ -5,11 +5,21 @@ export default function updateUser(req, res) {
   userModel
     .findById(req.currentUserUd)
     .then(user => {
+      // checking which feilds to update or not
+
+      email = email === undefined ? user.email : email
+      password = password === undefined ? user.password : password
+      name = name === undefined ? user.name : name
+      DOB = DOB === undefined ? user.DOB : DOB
+
       user = { email, password, name, DOB }
-      user.save()
-      res.status(200).json({
-        msg: 'user updated successfully',
+      user.save().then((user) => {
+        res.status(200).json({
+          msg: 'user updated successfully',
+          upadatedUser: user
+        })
       })
+
     })
     .catch(err => {
       return res.status(500).json({

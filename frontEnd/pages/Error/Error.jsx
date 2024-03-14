@@ -4,7 +4,7 @@ export default function ErrorPage() {
   const error = useRouteError();
   let navigate=useNavigate()
   let[counter,SetCounter]=useState(30)
-console.log(error)
+(error)
 setTimeout(()=>{
 SetCounter(counter=counter-1)
   if(counter===0)

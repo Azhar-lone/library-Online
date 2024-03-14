@@ -7,11 +7,11 @@ import { useLoading } from '../../Context/LoadingContext'
 export default function SignUp() {
 window.document.title="signUp"
   const [user, setUser] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    name: '',
-    DOB: ''
+    email: String(''),
+    password: String(''),
+    confirmPassword: String(''),
+    name: String(''),
+    DOB: String('')
   })
   let Navigate = useNavigate()
   let { setLoading } = useLoading()

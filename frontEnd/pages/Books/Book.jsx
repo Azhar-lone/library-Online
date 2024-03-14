@@ -40,10 +40,10 @@ export default function Book (props) {
   return (
     <div   className='lg:w-[48%] xl:w-[30%] md:w-[46%] w-[99%] dark bg-white h-[75vh] shadow-2xl flex flex-col items-center justify-around rounded-2xl '>
       <img
-        src={book.thumnailPicture}
+        src={book.thumbnailPicture}
         
         alt='bookthumnail'
-        className='  h-[90%] w-[100%] '
+        className='  h-[90%] w-[100%] rounded-2xl '
         onClick={()=>Navigate(`/books/${id}`)}
       />
       <IoHeart className='hover:text-red-600 hover:cursor-pointer  size-10 text-blue-500 relative  md:left-[42%]'/>

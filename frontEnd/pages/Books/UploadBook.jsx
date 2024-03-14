@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useLoading } from '../../Context/LoadingContext'
 import { BackendUrl } from '../../globals'
-export default function UploadBook () {
+export default function UploadBook() {
   const [book, setBook] = useState({
-    bookName: '',
+    bookName: String(''),
     bookAuthor: '',
     bookDiscription: '',
     bookCategory: '',
@@ -21,7 +21,7 @@ export default function UploadBook () {
     }))
   }
 
-  async function uploadBook () {
+  async function uploadBook() {
     try {
       setLoading(true)
       let formData = new FormData()
@@ -31,12 +31,11 @@ export default function UploadBook () {
       formData.append('bookDiscription', book.bookDiscription)
       formData.append('bookCategory', book.bookCategory)
       formData.append('publishedOn', book.publishedOn)
-      formData.append('file', book.file)
-      console.log('FormData:', Array.from(formData.entries()))
+      formData.append('pdf', book.file)
 
       let res = await fetch(BackendUrl + '/book/upload', {
         method: 'POST',
-credentials:"include",
+        credentials: "include",
         body: formData
       })
       let json = await res.json()

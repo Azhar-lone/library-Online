@@ -2,7 +2,7 @@ import { check } from "express-validator"
 const validateUploadBook = [
     // bookName
     check("bookName")
-        .exists().withMessage("bookAuthor is required")
+        .exists().withMessage("bookName is required")
         .isString().withMessage("bookName expected string")
         .isLength({ max: 30 }).withMessage("too long bookName")
         .escape().trim(),

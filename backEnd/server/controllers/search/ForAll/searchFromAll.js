@@ -1,8 +1,8 @@
 // importing dependencies 
 
 // importing models
-import userModel from "../../../model/userModel";
-import bookModel from "../../../model/bookModel";
+import userModel from "../../../model/userModel.js";
+import bookModel from "../../../model/bookModel.js";
 
 export default async function searchFromAll(req,res) {
     try {

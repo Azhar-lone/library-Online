@@ -11,6 +11,9 @@ import { ToastContainer } from 'react-toastify';
 import RootLayout from './routes/RootLayout.jsx'
 import HomeLayout from './routes/HomeLayout.jsx'
 import Protected from './routes/Protected.jsx'
+
+
+
 import {
 
   AboutUs,
@@ -37,7 +40,6 @@ const router = createBrowserRouter(
           <Route path='' element={<HomeLayout />} >
             <Route path='Followingsbook' element={<Protected> <Following /></Protected>} />
             <Route path='TrendingBooks' element={<Trending />} />
-
           </Route>
           <Route path='about' element={<AboutUs />} />
           <Route path='uploadbook' element={<Protected><UploadBook /></Protected>} />

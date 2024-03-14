@@ -5,11 +5,11 @@ import { toast } from 'react-toastify'
 import { useLoading } from '../../Context/LoadingContext'
 
 export default function LogIn() {
-window.document.title="login"
+  window.document.title = "login"
 
   const [user, setUser] = useState({
-    email: '',
-    password: ''
+    email: String(''),
+    password: String("")
   })
 
   let Navigate = useNavigate()
@@ -56,8 +56,6 @@ window.document.title="login"
         autoClose: 1000
       })
       setLoading(false)
-
-      console.log(error)
     }
   }
 

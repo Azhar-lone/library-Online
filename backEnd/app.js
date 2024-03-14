@@ -10,6 +10,7 @@ import userRouter from './server/Routes/userRoutes.js';
 import bookRouter from './server/Routes/bookRoutes.js';
 import reviewRouter from './server/Routes/reviewRoutes.js';
 import searchRouter from "./server/Routes/searchRoutes.js"
+import aboutUsRouter from './server/Routes/aboutUsRoutes.js';
 //initializing express app
 const app = express();
 
@@ -34,7 +35,8 @@ app
   .use('/user', userRouter)
   .use('/book', bookRouter)
   .use('/review', reviewRouter)
-.use("/search",searchRouter)
+  .use("/search", searchRouter)
+  .use("/aboutus", aboutUsRouter)
 // Handling 404 Not Found
 app.use((req, res) => {
   res.status(404).json({

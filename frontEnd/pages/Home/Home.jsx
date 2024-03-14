@@ -7,7 +7,7 @@ export default function Home(params) {
   document.title="library-Online|Home"
   let { setIsLoggedIn, isLoggedIn, setCurrentUserName } = useUser()
   useEffect(() => {
-    checkLoggedIn
+    checkLoggedIn()
 
   }, [])
 

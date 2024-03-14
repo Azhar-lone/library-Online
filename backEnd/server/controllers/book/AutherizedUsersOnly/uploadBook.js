@@ -6,19 +6,24 @@ import bookModel from '../../../model/bookModel.js'
 import userModel from '../../../model/userModel.js'
 import { PDFImage } from 'pdf-image';//vernalable pakage
 
+// importing Validations
+import { validateUploadBook } from '../../../validations/exportValidations.js'
+import {validationError} from "../../../middlewares/auth.js"
+
 const storage = multer.diskStorage({
   destination: async function (req, file, cb) {
-    // check Book type is valid or not by compare it type with our types (defined above )
     try {
+validateUploadBook
+validationError
+console.log("somewhere")
+
       let { bookName, bookAuthor, bookDiscription, bookCategory, publishedOn } =
         req.body
-
 
       let username = await userModel.findById(req.currentUserId, {
         userName: 1,
         _id: 0
       })
-
       let slugedName = slugify(bookName)
 
       let book = new bookModel({
@@ -73,12 +78,12 @@ const storage = multer.diskStorage({
 
 export const uploadBook_Multer = multer({
   storage: storage,
-  limits: {
-    fileSize: 100 * 1024 * 1024,//100Mb
-    fields: 5,
-    files: 1,
-    parts: 6
-  },
+  // limits: {
+  //   fileSize: 100 * 1024 * 1024,//100Mb
+  //   fields: 6,
+  //   files: 1,
+  //   parts: 6
+  // },
 })
 
 export async function uploadBook(req, res) {
@@ -93,7 +98,7 @@ export async function uploadBook(req, res) {
       msg: 'book uploaded successfully',
       book: savedBook
     })
-  } catch (error) {
+  }catch (error) {
     console.log(error)
     res.status(500).json({
       msg: 'internal server error',

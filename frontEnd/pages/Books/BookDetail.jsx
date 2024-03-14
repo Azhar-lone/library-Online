@@ -12,14 +12,14 @@ export default function BookDetail(props) {
   let { setLoading } = useLoading()
 
   let [book, setBook] = useState({
-    bookName: "Testing Name",
-    bookAuthor: "Testing Author",
-    discription: "Bokk discription is something whiinc should be llarge and lenghthy so this is not that lengthy but it is just for demostration purposes",
-    uploadedIn: Date.now(),
-    likedBy: [],
+    bookName: String,
+    bookAuthor: String,
+    discription: String,
+    uploadedIn: Date,
+    likedBy: Array,
     addedBy: {
-      profilePic: "/src/assets/images/test.png",
-      userName: "some Usernames"
+      profilePic: String,
+      userName: String
 
     }
   })
@@ -30,7 +30,7 @@ export default function BookDetail(props) {
 
   useEffect(() => {
     setLoading(true)
-    getBookDetails
+    getBookDetails()
     setLoading(false)
   }, [])
 
@@ -79,19 +79,11 @@ export default function BookDetail(props) {
       <User user={book.addedBy} classNames="bg-white dark m-5" />
       <div className='gap-4 bg-white shadow-2xl dark flex flex-col w-[95%] items-center pb-5 rounded-lg'>
 
-        <img src='/src/assets/images/test.png' alt='bookthumnail' className='w-[100%] h-[100vh] ' />
+        <img src={book.thumnailPicture} alt='bookthumnail' className='w-[100%] h-[100vh] bg-gray-200' />
         <div className='w-full '>{/* // bookInfo */}
           <h1 className='w-[100%] text-center p-2  text-2xl'>{book.bookName}</h1>
           <h6 className='w-[100%] text-center p-2  text-xl'>Author: {book.bookAuthor}</h6>
           <div className='p-8'>
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui modi quae quod cupiditate fugiat eveniet praesentium illum culpa? Culpa, voluptates quaerat ipsam facilis, modi perferendis dolores enim voluptatem reiciendis inventore placeat ducimus commodi. Sapiente non nemo deleniti. Laborum, asperiores quisquam vitae facilis unde blanditiis obcaecati. Quasi error expedita, corporis nam soluta perferendis esse unde quod eum dolore repudiandae architecto ullam ducimus animi nobis molestiae nisi illo veniam officiis! Sit distinctio modi debitis soluta omnis eligendi, iure laborum expedita sed aliquid error velit quibusdam! Dolorum sequi numquam laboriosam eius, fugiat eligendi ad nam aspernatur cumque veritatis alias mollitia sit doloribus vel!
-
-
             {book.discription}</div>
         </div>
         <div className='btnFunc text-center'>
@@ -109,6 +101,5 @@ export default function BookDetail(props) {
       </div>
       <Related className="w-full m-5 p-5 flex justify-around gap-5 flex-wrap rounded-lg" bookId={book._id} />
       <Discussion className="flex flex-col items-center gap-4 w-[95%] dark bg-white shadow-2xl rounded-lg" />
-    </div>
-  )
+    </div>)
 }

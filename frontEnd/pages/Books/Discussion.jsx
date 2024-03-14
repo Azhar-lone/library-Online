@@ -2,19 +2,10 @@ import { useEffect, useState } from "react"
 
 export default function Discussion(props) {
   let bookId = props.bookId
-  let [reviews, setReviews] = useState([{
-    review: "some thing adsgbads dasg dds ljk mlamdklmglakdsmgkdmkmk adg  adkjgk jdskdasjgkldajklglj kdklgjd\
-    dgadsgdgadgdsgdsgdsgsd  adsgd     nkladslkg kjdskj dlskj k",
-  }, {
-    review: "some thing",
-  }, {
-    review: "some thing",
-  }, {
-    review: "some thing",
-  }])
+  let [reviews, setReviews] = useState([])
 
 useEffect(()=>{
-// getTopReveiws
+getTopReveiws()
 },[])
 
   async function getTopReveiws() {

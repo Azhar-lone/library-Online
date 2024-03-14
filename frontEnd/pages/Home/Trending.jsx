@@ -3,17 +3,19 @@ import "../components/css/posts.css"
 import {toast} from "react-toastify"
 import { useState ,useEffect} from "react"
 import {BackendUrl} from "../../globals"
+import {FollowingBooks} from "/StaticData/home.js"
+
 export default function Trending () {
   document.title="library-Online|TrendingBooks"
  
-
+console.log(FollowingBooks)
   //Following books will be fetched from server
   //on getrequest to followingBooks which will get
   // get("/serveraddress/getFollowingsPosts")
 
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState(FollowingBooks)
   useEffect(() => {
-    reqTrendingBooks
+    reqTrendingBooks()
   }, [])
 
   async function reqTrendingBooks () {
