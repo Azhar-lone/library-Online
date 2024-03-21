@@ -292,3 +292,13 @@ PUT /aboutus/edit
 ```
 #### if status=200 ok returns{msg,aboutus}
 #### else returns{msg}
+
+# 4-Categories feature
+### USERS ONLY Routes
+**1** get categories 
+```javascript
+get /categories/
+```
+#### if status=200 ok returns{msg,categories}
+#### else returns{msg}
+

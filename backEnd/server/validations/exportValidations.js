@@ -19,6 +19,11 @@ import queryValidations from "./searchValidations/    queryValidations.js";
 
 // About Us Validations
 import validateAboutUs from "./aboutUsValidations/validateAboutUs.js";
+
+
+// Categories Validations
+import validateUpdateCategories from "./categoriesValidations/validateUpdateCategories.js"
+
 export {
     //  user validations
     signUpValidation,
@@ -37,4 +42,6 @@ export {
     queryValidations,
     // About Us Validations
     validateAboutUs,
+    // Categories Validations
+    validateUpdateCategories,
 }
