@@ -8,13 +8,19 @@ export function useUser(params) {
 }
 
 export function UserProvidor(props) {
-  let [currentUserName, setCurrentUserName,] = useState("")
-  let [isLoggedIn, setIsLoggedIn] = useState(false)
-let [currentUser,setCurrentUser]=useState({})
-let[currentUserBook,setCurrentUserBooks]=useState([])
+  let [user, setUser] = useState(
+  //  undefined
+    {
+    following: [
+      { _id: 1 }
+    ],
+    _id: 1
+  }
+  )
+  let [usersBook, setUsersBooks] = useState([])
   return (
     <userContext.Provider
-      value={{ isLoggedIn, setIsLoggedIn,currentUserName,setCurrentUserName,currentUser,setCurrentUser,currentUserBook,setCurrentUserBooks}}
+      value={{ user, setUser, usersBook, setUsersBooks }}
     >
       {props.children}
     </userContext.Provider>
